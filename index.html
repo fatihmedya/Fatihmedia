@@ -37,34 +37,15 @@
         .btn-outline-custom { border: 1px solid rgba(255, 255, 255, 0.18); background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); }
         .btn-outline-custom:hover { border-color: rgba(255, 255, 255, 0.4); background: rgba(255, 255, 255, 0.08); }
 
-        /* Kaydırmalı Testimonial Mesaj Balonu */
-        .testimonial-box {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-            padding: 25px 20px;
-            width: 100%;
-            max-width: 420px;
-            margin: 60px auto 30px auto;
-            text-align: left;
+        /* Kaydırmalı Geldikçe Yüklenen Bölüm Efekti (Scroll Reveal for All Sections) */
+        .reveal-section {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .testimonial-box.reveal {
+        .reveal-section.active {
             opacity: 1;
             transform: translateY(0);
-        }
-        .testimonial-box i.quote-icon {
-            font-size: 22px;
-            color: rgba(255, 255, 255, 0.3);
-            margin-bottom: 10px;
-            display: block;
-        }
-        .testimonial-box p {
-            font-size: 14px;
-            color: #ccc;
-            font-style: italic;
         }
 
         /* Sabit Sosyal Medya Dock'u */
@@ -145,24 +126,24 @@
     <!-- Main Content Container -->
     <main class="w-full max-w-xl mx-auto px-6 pt-6 pb-24 flex flex-col items-center text-center z-10 relative">
         
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 mb-6 mt-4">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 mb-6 mt-4 reveal-section">
             <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
             <span class="text-xs text-gray-300 font-medium">Fatih Sadak : Geleceğin Ajansı</span>
         </div>
 
-        <h1 class="font-heading text-4xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight mb-6">
+        <h1 class="font-heading text-4xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight mb-6 reveal-section">
             Markanızı <span class="text-silver-gradient">Zirveye</span> Taşıyoruz
         </h1>
 
-        <p class="text-gray-400 text-sm leading-relaxed max-w-md mb-8">
+        <p class="text-gray-400 text-sm leading-relaxed max-w-md mb-8 reveal-section">
             Instagram, TikTok ve tüm sosyal medya hesap kurtarma, Google kötü yorum silme, itibar yönetimi ve performans odaklı reklam stratejileri ile dijitalde gerçek sonuçlar alıyoruz.
         </p>
 
         <!-- CTA Action Buttons -->
-        <div class="w-full space-y-3.5 mb-12">
+        <div class="w-full space-y-3.5 mb-12 reveal-section">
             <a href="https://wa.me/905415703679?text=Merhaba%20Fatih%20Bey,%20ücretsiz%20danışmanlık%20almak%20istiyorum." target="_blank" class="w-full py-4 px-6 rounded-full bg-white text-black font-bold text-sm flex items-center justify-center gap-2 hover:bg-gray-200 transition-all shadow-lg">
                 <i class="fa-brands fa-whatsapp text-lg text-emerald-600"></i>
-                <span>Hemen WhatsApp'tan Yazın (0541 570 36 79)</span>
+                <span>WhatsApp ile İletişime Geçin</span>
             </a>
             <a href="https://instagram.com/whyfatihh" target="_blank" class="btn-outline-custom w-full py-4 px-6 rounded-full text-white font-semibold text-sm flex items-center justify-center gap-2.5 transition-all">
                 <i class="fa-brands fa-instagram text-pink-400 text-base"></i>
@@ -171,7 +152,7 @@
         </div>
 
         <!-- İstatistik & Başarı Sayaçları -->
-        <div class="w-full grid grid-cols-3 gap-3 mb-16">
+        <div class="w-full grid grid-cols-3 gap-3 mb-16 reveal-section">
             <div class="glass-card p-4 rounded-2xl flex flex-col items-center">
                 <span class="text-2xl font-black text-white">50+</span>
                 <span class="text-[10px] text-gray-400 uppercase mt-1">Mutlu Müşteri</span>
@@ -186,8 +167,8 @@
             </div>
         </div>
 
-        <!-- Section: Öncesi / Sonrası (Before & After) Başarı Vitrini -->
-        <section id="success-showcase" class="w-full text-left mb-16">
+        <!-- Section: Öncesi / Sonrası Başarı Vitrini -->
+        <section id="success-showcase" class="w-full text-left mb-16 reveal-section">
             <h2 class="font-heading text-2xl font-extrabold text-white mb-2">Başarı Vitrini</h2>
             <p class="text-xs text-gray-400 mb-6">Harita itibarındaki gerçek değişim kartı ve operasyon sonuçlarımız.</p>
             
@@ -204,7 +185,7 @@
         </section>
 
         <!-- Section: Uzmanlık Alanlarımız -->
-        <section id="services" class="w-full text-left mb-16 space-y-4">
+        <section id="services" class="w-full text-left mb-16 space-y-4 reveal-section">
             <h2 class="font-heading text-2xl font-extrabold text-white mb-2">Uzmanlık Alanlarımız</h2>
             <p class="text-xs text-gray-400 mb-6">Sadece tasarım değil, satış ve etkileşim getiren uçtan uca stratejik dijital çözümler sunuyoruz.</p>
             
@@ -250,7 +231,7 @@
         </section>
 
         <!-- Section: İnteraktif Fiyat Teklifi Hesaplayıcı -->
-        <section id="calculator" class="w-full text-left mb-16">
+        <section id="calculator" class="w-full text-left mb-16 reveal-section">
             <h2 class="font-heading text-2xl font-extrabold text-white mb-2">Fiyat Teklifi Hesaplayıcı</h2>
             <p class="text-xs text-gray-400 mb-6">İhtiyacınız olan hizmeti seçip doğrudan detaylı WhatsApp mesajı oluşturan interaktif araç.</p>
             
@@ -272,7 +253,7 @@
         </section>
 
         <!-- Section: Neden Fatih Sadak? -->
-        <section id="why-us" class="w-full text-left mb-16 space-y-6">
+        <section id="why-us" class="w-full text-left mb-16 space-y-6 reveal-section">
             <div>
                 <h2 class="font-heading text-2xl font-extrabold text-white mb-2">Neden Fatih Sadak?</h2>
                 <p class="text-xs text-gray-400 mb-4">Standart ajanslardan farklıyız. Biz sizin dışarıdan aldığınız bir hizmet değil, dijitaldeki ortağınızız. Her işletmeye özel, butik ve sonuç odaklı yaklaşıyoruz.</p>
@@ -304,7 +285,7 @@
         </section>
 
         <!-- Section: Nasıl Çalışıyoruz? -->
-        <section id="how-it-works" class="w-full text-left mb-16">
+        <section id="how-it-works" class="w-full text-left mb-16 reveal-section">
             <h2 class="font-heading text-2xl font-extrabold text-white mb-2">Nasıl Çalışıyoruz?</h2>
             <p class="text-xs text-gray-400 mb-6">Sade, şeffaf ve sonuç odaklı. 4 adımda dijital dönüşümünüzü gerçekleştiriyoruz.</p>
             
@@ -341,7 +322,7 @@
         </section>
 
         <!-- Section: Müşteri Yorumları -->
-        <section id="testimonials" class="w-full text-left mb-16">
+        <section id="testimonials" class="w-full text-left mb-16 reveal-section">
             <h2 class="font-heading text-2xl font-extrabold text-white mb-6">Müşteri Yorumları</h2>
             
             <div class="space-y-4">
@@ -363,16 +344,10 @@
                     <div class="text-[10px] text-gray-400">Restoran Sahibi</div>
                 </div>
             </div>
-
-            <!-- Kaydırıldığında Süzülen Özel Mesaj Balonu -->
-            <div class="testimonial-box" id="testimonial">
-                <i class="fa-solid fa-quote-left quote-icon"></i>
-                <p>"Fatih S ile çalışmak ayrıcalıktır. Burada olduğunuz için teşekkür ederiz."</p>
-            </div>
         </section>
 
         <!-- Section: İletişim & Teklif Formu -->
-        <section id="contact" class="w-full text-left mb-12">
+        <section id="contact" class="w-full text-left mb-12 reveal-section">
             <div class="glass-card p-6 rounded-3xl mb-6">
                 <h3 class="font-heading text-xl font-bold text-white mb-2">Bizimle Başlayın</h3>
                 <p class="text-xs text-gray-400 mb-6">Projenizi hayata geçirmek veya kapanan hesabınızı kurtarmak için tek adım kaldı. Formu doldurun ya da WhatsApp'tan yazın.</p>
@@ -381,8 +356,8 @@
                     <a href="https://wa.me/905415703679?text=Merhaba%20Fatih%20Bey,%20kapanan%20hesab%C4%B1m%20i%C3%A7in%20yard%C4%B1m%20istiyorum." target="_blank" class="w-full p-4 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-3 hover:border-emerald-500/50 transition-all">
                         <i class="fa-brands fa-whatsapp text-emerald-400 text-xl"></i>
                         <div class="text-left">
-                            <div class="text-xs font-bold text-white">WhatsApp Hattı (0541 570 36 79)</div>
-                            <div class="text-[10px] text-gray-400">Acil Hesap Kurtarma & Bilgi Al</div>
+                            <div class="text-xs font-bold text-white">WhatsApp Hattı</div>
+                            <div class="text-[10px] text-gray-400">Acil Hesap Kurtarma & Bilgi Almak İçin Tıklayın</div>
                         </div>
                     </a>
                     <a href="https://instagram.com/whyfatihh" target="_blank" class="w-full p-4 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-3 hover:border-pink-500/50 transition-all">
@@ -434,7 +409,7 @@
         </section>
 
         <!-- Footer -->
-        <footer class="text-xs text-gray-500 border-t border-white/10 pt-8 w-full flex flex-col items-center gap-4">
+        <footer class="text-xs text-gray-500 border-t border-white/10 pt-8 w-full flex flex-col items-center gap-4 reveal-section">
             <div class="flex items-center gap-2 font-bold text-white text-sm">
                 <span class="font-serif-logo text-lg text-white">F&S</span>
                 FATİH SADAK
@@ -476,18 +451,20 @@
 
     <!-- Ekranın Altında Sabit Duran Platform Logoları Dock'u & Arka Plan Müzik Çaları -->
     <div class="fixed-social-dock">
-        <!-- Arka Plan Müzik Çaları -->
-        <button id="music-toggle" onclick="toggleAudio()" class="dock-item" title="Müzik Çal/Durdur" style="color: #10B981;">
+        <!-- Ati242 - Maraton Instrumental Müzik Butonu -->
+        <button id="music-btn" onclick="toggleYoutubeMusic()" class="dock-item" title="Ati242 - Maraton Instrumental" style="color: #EF4444; background: none; border: none; cursor: pointer;">
             <i class="fa-solid fa-play" id="music-icon"></i>
         </button>
-        <audio id="bg-music" loop>
-            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-        </audio>
 
         <a href="https://instagram.com/whyfatihh" target="_blank" class="dock-item" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
         <a href="https://tiktok.com/@whyfatihz" target="_blank" class="dock-item" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
         <a href="https://t.me/whyfatihz" target="_blank" class="dock-item" title="Telegram"><i class="fa-brands fa-telegram"></i></a>
-        <a href="https://facebook.com" target="_blank" class="dock-item" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="https://wa.me/905415703679?text=Merhaba%20Fatih%20Bey,%20web%20sitenizden%20ulaşıyorum." target="_blank" class="dock-item" title="WhatsApp"><i class="fa-brands fa-whatsapp" style="color: #10B981;"></i></a>
+    </div>
+
+    <!-- Gizli YouTube Müzik Oynatıcı -->
+    <div id="yt-player-container" style="position: absolute; width: 1px; height: 1px; overflow: hidden; opacity: 0; pointer-events: none;">
+        <iframe id="yt-player" width="100" height="100" src="https://www.youtube.com/embed/83K8VQ6B63Q?enablejsapi=1" frameborder="0" allow="autoplay"></iframe>
     </div>
 
     <script>
@@ -526,24 +503,39 @@ Mesaj: ${msg}`);
             document.getElementById('modal-booking').classList.add('hidden');
         }
 
-        // Scroll Animasyon Kontrolü
-        window.addEventListener('scroll', () => {
-            const testimonial = document.getElementById('testimonial');
-            if (testimonial && testimonial.getBoundingClientRect().top < window.innerHeight / 1.2) {
-                testimonial.classList.add('reveal');
-            }
+        // Tüm Bölümler İçin Kaydıkça Yüklenme Efekti (Scroll Reveal Observer)
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal-section').forEach(section => {
+            observer.observe(section);
         });
 
-        // Arka Plan Müziği Oynatma Kontrolü
-        function toggleAudio() {
-            const audio = document.getElementById('bg-music');
+        // YouTube Müzik Oynatıcı Kontrolü
+        let isPlaying = false;
+        function toggleYoutubeMusic() {
+            const iframe = document.getElementById('yt-player');
             const icon = document.getElementById('music-icon');
-            if (audio.paused) {
-                audio.play();
+            
+            if (!isPlaying) {
+                iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
                 icon.className = 'fa-solid fa-pause';
+                isPlaying = true;
             } else {
-                audio.pause();
+                iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
                 icon.className = 'fa-solid fa-play';
+                isPlaying = false;
             }
         }
     </script>
