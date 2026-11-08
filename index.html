@@ -36,6 +36,67 @@
         .glow-bg { position: absolute; width: 350px; height: 350px; background: radial-gradient(circle, rgba(239, 68, 68, 0.15) 0%, rgba(0, 0, 0, 0) 70%); border-radius: 50%; pointer-events: none; z-index: 0; }
         .btn-outline-custom { border: 1px solid rgba(255, 255, 255, 0.18); background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); }
         .btn-outline-custom:hover { border-color: rgba(255, 255, 255, 0.4); background: rgba(255, 255, 255, 0.08); }
+
+        /* Kaydırmalı Testimonial Mesaj Balonu */
+        .testimonial-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 25px 20px;
+            width: 100%;
+            max-width: 420px;
+            margin: 60px auto 30px auto;
+            text-align: left;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        .testimonial-box.reveal {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .testimonial-box i.quote-icon {
+            font-size: 22px;
+            color: rgba(255, 255, 255, 0.3);
+            margin-bottom: 10px;
+            display: block;
+        }
+        .testimonial-box p {
+            font-size: 14px;
+            color: #ccc;
+            font-style: italic;
+        }
+
+        /* Sabit Sosyal Medya Dock'u */
+        .fixed-social-dock {
+            position: fixed;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 12px 24px;
+            background: rgba(18, 18, 24, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(20px);
+            border-radius: 40px;
+            z-index: 99;
+        }
+        .dock-item {
+            color: #aaa;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .dock-item:hover {
+            color: #ffffff;
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between relative selection:bg-white selection:text-black">
@@ -82,7 +143,7 @@
     </div>
 
     <!-- Main Content Container -->
-    <main class="w-full max-w-xl mx-auto px-6 pt-6 pb-16 flex flex-col items-center text-center z-10 relative">
+    <main class="w-full max-w-xl mx-auto px-6 pt-6 pb-24 flex flex-col items-center text-center z-10 relative">
         
         <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 mb-6 mt-4">
             <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
@@ -142,12 +203,11 @@
             </div>
         </section>
 
-        <!-- Section: Uzmanlık Alanlarımız (Kapanan Hesap Kurtarma & Google Yorum Silme) -->
+        <!-- Section: Uzmanlık Alanlarımız -->
         <section id="services" class="w-full text-left mb-16 space-y-4">
             <h2 class="font-heading text-2xl font-extrabold text-white mb-2">Uzmanlık Alanlarımız</h2>
             <p class="text-xs text-gray-400 mb-6">Sadece tasarım değil, satış ve etkileşim getiren uçtan uca stratejik dijital çözümler sunuyoruz.</p>
             
-            <!-- Card 1: Kapanan Instagram & Sosyal Medya Hesap Kurtarma (Öne Çıkarılmış) -->
             <div class="glass-card p-6 rounded-3xl border border-red-500/30 relative overflow-hidden">
                 <div class="flex justify-between items-start mb-3">
                     <div class="w-10 h-10 rounded-xl bg-red-500/10 border border-red-500/20 flex items-center justify-center text-red-400 text-lg">
@@ -163,7 +223,6 @@
                 </p>
             </div>
 
-            <!-- Card 2: Google Kötü Yorum Silme -->
             <div class="glass-card p-6 rounded-3xl border border-white/10 relative overflow-hidden">
                 <div class="flex justify-between items-start mb-3">
                     <div class="w-10 h-10 rounded-xl bg-red-500/10 border border-red-500/20 flex items-center justify-center text-red-400 text-lg">
@@ -179,7 +238,6 @@
                 </p>
             </div>
 
-            <!-- Card 3: Sosyal Medya Yönetimi -->
             <div class="glass-card p-6 rounded-3xl">
                 <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-white text-lg mb-3">
                     <i class="fa-brands fa-instagram"></i>
@@ -213,7 +271,7 @@
             </div>
         </section>
 
-        <!-- Section: Neden Fatih Sadak? (+ SSS / Neden Biz Sorusu) -->
+        <!-- Section: Neden Fatih Sadak? -->
         <section id="why-us" class="w-full text-left mb-16 space-y-6">
             <div>
                 <h2 class="font-heading text-2xl font-extrabold text-white mb-2">Neden Fatih Sadak?</h2>
@@ -235,7 +293,6 @@
                 </div>
             </div>
 
-            <!-- Neden Fatih Sadak Soru-Cevap Kartı (Özel Soru Bölümü) -->
             <div class="glass-card p-6 rounded-3xl border border-white/10 space-y-3">
                 <h3 class="font-heading text-base font-bold text-white flex items-center gap-2">
                     <i class="fa-solid fa-circle-question text-emerald-400"></i> Neden Fatih Sadak ile Çalışmalısınız?
@@ -264,7 +321,7 @@
                     <div>
                         <h3 class="font-bold text-white text-sm mb-1">İşletme Analizi</h3>
                         <p class="text-xs text-gray-400">Mevcut dijital varlığınızı detaylıca inceleyelim.</p>
-                        </div>
+                    </div>
                 </div>
                 <div class="glass-card p-5 rounded-2xl flex gap-4 items-start">
                     <span class="text-xl font-black text-white opacity-40">03</span>
@@ -306,17 +363,22 @@
                     <div class="text-[10px] text-gray-400">Restoran Sahibi</div>
                 </div>
             </div>
+
+            <!-- Kaydırıldığında Süzülen Özel Mesaj Balonu -->
+            <div class="testimonial-box" id="testimonial">
+                <i class="fa-solid fa-quote-left quote-icon"></i>
+                <p>"Fatih S ile çalışmak ayrıcalıktır. Burada olduğunuz için teşekkür ederiz."</p>
+            </div>
         </section>
 
-        <!-- Section: İletişim & Teklif Formu & Canlı Randevu Modalı Tetikleyicisi -->
+        <!-- Section: İletişim & Teklif Formu -->
         <section id="contact" class="w-full text-left mb-12">
             <div class="glass-card p-6 rounded-3xl mb-6">
                 <h3 class="font-heading text-xl font-bold text-white mb-2">Bizimle Başlayın</h3>
                 <p class="text-xs text-gray-400 mb-6">Projenizi hayata geçirmek veya kapanan hesabınızı kurtarmak için tek adım kaldı. Formu doldurun ya da WhatsApp'tan yazın.</p>
                 
-                <!-- Doğrudan İletişim Butonları -->
                 <div class="space-y-3 mb-6">
-                    <a href="https://wa.me/905415703679?text=Merhaba%20Fatih%20Bey,%20kapanan%20hesabım%20için%20yardım%20istiyorum." target="_blank" class="w-full p-4 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-3 hover:border-emerald-500/50 transition-all">
+                    <a href="https://wa.me/905415703679?text=Merhaba%20Fatih%20Bey,%20kapanan%20hesab%C4%B1m%20i%C3%A7in%20yard%C4%B1m%20istiyorum." target="_blank" class="w-full p-4 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-3 hover:border-emerald-500/50 transition-all">
                         <i class="fa-brands fa-whatsapp text-emerald-400 text-xl"></i>
                         <div class="text-left">
                             <div class="text-xs font-bold text-white">WhatsApp Hattı (0541 570 36 79)</div>
@@ -330,7 +392,6 @@
                             <div class="text-[10px] text-gray-400">Profili Ziyaret Et</div>
                         </div>
                     </a>
-                    <!-- Canlı Randevu Planlama Modalı Tetikleme Butonu -->
                     <button onclick="document.getElementById('modal-booking').classList.remove('hidden')" class="w-full p-4 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-3 hover:border-blue-400/50 transition-all text-left">
                         <i class="fa-regular fa-calendar-check text-blue-400 text-xl"></i>
                         <div>
@@ -384,7 +445,7 @@
                 <a href="#contact" class="hover:text-white transition-colors">İletişim</a>
                 <a href="https://instagram.com/whyfatihh" target="_blank" class="hover:text-white transition-colors">Instagram</a>
             </div>
-            <div class="text-[11px] text-gray-600 mt-4">© 2026 Fatih Sadak. Tüm hakları saklıdır.</div>
+            <div class="text-[11px] text-gray-600 mt-4 mb-8">© 2026 Fatih Sadak. Tüm hakları saklıdır.</div>
         </footer>
     </main>
 
@@ -411,6 +472,22 @@
                 </button>
             </form>
         </div>
+    </div>
+
+    <!-- Ekranın Altında Sabit Duran Platform Logoları Dock'u & Arka Plan Müzik Çaları -->
+    <div class="fixed-social-dock">
+        <!-- Arka Plan Müzik Çaları -->
+        <button id="music-toggle" onclick="toggleAudio()" class="dock-item" title="Müzik Çal/Durdur" style="color: #10B981;">
+            <i class="fa-solid fa-play" id="music-icon"></i>
+        </button>
+        <audio id="bg-music" loop>
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        </audio>
+
+        <a href="https://instagram.com/whyfatihh" target="_blank" class="dock-item" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://tiktok.com/@whyfatihz" target="_blank" class="dock-item" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="https://t.me/whyfatihz" target="_blank" class="dock-item" title="Telegram"><i class="fa-brands fa-telegram"></i></a>
+        <a href="https://facebook.com" target="_blank" class="dock-item" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
     </div>
 
     <script>
@@ -447,6 +524,27 @@ Mesaj: ${msg}`);
             const text = encodeURIComponent(`Merhaba Fatih Bey, ben ${name}. Canlı randevu planlama üzerinden ${time} zamanını talep ediyorum.`);
             window.open(`https://wa.me/905415703679?text=${text}`, '_blank');
             document.getElementById('modal-booking').classList.add('hidden');
+        }
+
+        // Scroll Animasyon Kontrolü
+        window.addEventListener('scroll', () => {
+            const testimonial = document.getElementById('testimonial');
+            if (testimonial && testimonial.getBoundingClientRect().top < window.innerHeight / 1.2) {
+                testimonial.classList.add('reveal');
+            }
+        });
+
+        // Arka Plan Müziği Oynatma Kontrolü
+        function toggleAudio() {
+            const audio = document.getElementById('bg-music');
+            const icon = document.getElementById('music-icon');
+            if (audio.paused) {
+                audio.play();
+                icon.className = 'fa-solid fa-pause';
+            } else {
+                audio.pause();
+                icon.className = 'fa-solid fa-play';
+            }
         }
     </script>
 </body>
