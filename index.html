@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="tr" class="dark scroll-smooth">
 <head>
     <meta charset="UTF-8">
@@ -11,7 +11,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -20,6 +20,7 @@
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
                         heading: ['Plus Jakarta Sans', 'sans-serif'],
+                        signature: ['Playfair Display', 'serif'],
                     },
                     colors: {
                         dark: { bg: '#050505', card: '#0D0D11', border: 'rgba(255, 255, 255, 0.08)' }
@@ -33,7 +34,7 @@
         .font-serif-logo { font-family: 'Times New Roman', Times, serif; letter-spacing: -1px; }
         .text-silver-gradient { background: linear-gradient(180deg, #FFFFFF 20%, #8E8E93 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .glass-card { background: rgba(15, 15, 20, 0.7); border: 1px solid rgba(255, 255, 255, 0.08); backdrop-filter: blur(12px); }
-        .glow-bg { position: absolute; width: 350px; height: 350px; background: radial-gradient(circle, rgba(239, 68, 68, 0.15) 0%, rgba(0, 0, 0, 0) 70%); border-radius: 50%; pointer-events: none; z-index: 0; }
+        .glow-bg { position: absolute; width: 350px; height: 350px; background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, rgba(0, 0, 0, 0) 70%); border-radius: 50%; pointer-events: none; z-index: 0; }
         .btn-outline-custom { border: 1px solid rgba(255, 255, 255, 0.18); background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); }
         .btn-outline-custom:hover { border-color: rgba(255, 255, 255, 0.4); background: rgba(255, 255, 255, 0.08); }
 
@@ -59,11 +60,16 @@
             pointer-events: none;
         }
 
-        /* Hayır Butonu Kaybolma Efekti */
+        /* Hayır Butonu Kaybolma ve Evet Butonu Ortalanma Efekti */
         .fade-out-btn {
             opacity: 0;
             transform: scale(0.8);
             pointer-events: none;
+            width: 0 !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            border: none !important;
+            overflow: hidden;
             transition: all 0.4s ease;
         }
 
@@ -84,7 +90,7 @@
             transition: transform 0.3s ease;
         }
 
-        /* Yıldız Puanlama Efekti */
+        /* Yıldız Puanlama Efekti (Gümüş Tonları) */
         .star-btn {
             color: #4b5563;
             transition: color 0.3s ease, transform 0.2s ease;
@@ -94,8 +100,8 @@
             font-size: 24px;
         }
         .star-btn.active {
-            color: #e5e7eb;
-            text-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
+            color: #ffffff;
+            text-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
             transform: scale(1.15);
         }
 
@@ -151,31 +157,31 @@
             <span class="font-serif-logo text-7xl font-extrabold text-white tracking-tighter">
                 F<span class="text-lg font-sans tracking-normal align-middle mx-1.5 opacity-90 font-bold">&</span>S
             </span>
-            <p class="text-gray-400 text-sm tracking-wide">Bizimle çalışmaya hazır mısınız?</p>
-            <div class="flex items-center gap-4 mt-2">
-                <button onclick="enterSite()" class="px-8 py-3 rounded-full bg-white text-black font-extrabold text-xs tracking-widest uppercase hover:bg-gray-200 transition-all shadow-xl">
+            <p class="text-gray-300 text-sm tracking-wide">Bizimle çalışmaya hazır mısınız?</p>
+            <div id="splash-buttons" class="flex items-center justify-center gap-4 mt-2 transition-all duration-300">
+                <button onclick="enterSite()" id="yes-btn" class="px-8 py-3 rounded-full bg-white text-black font-extrabold text-xs tracking-widest uppercase hover:bg-gray-200 transition-all shadow-xl">
                     EVET
                 </button>
                 <button id="no-btn" onclick="hideNoButton()" class="px-8 py-3 rounded-full bg-white/10 text-white border border-white/20 font-extrabold text-xs tracking-widest uppercase hover:bg-white/20 transition-all">
                     HAYIR
                 </button>
             </div>
-            <p class="text-[11px] text-gray-500 italic mt-3 tracking-wide">Burda Sevgi Yok Her Şey Ticari :)</p>
+            <p class="text-xs text-gray-400 font-medium tracking-wider mt-4">Burda Sevgi Yok Her Şey Ticari :)</p>
         </div>
         <div class="text-[11px] text-gray-600 tracking-wider">
             &copy; 2026 Fatih Sadak. Tüm hakları saklıdır.
         </div>
     </div>
 
-    <!-- Karşılama / Canlı Asistan Popup (Sağ Üst Köşesi Çarpılı Oval Dikdörtgen) -->
-    <div id="welcome-popup" class="fixed top-6 right-6 z-50 max-w-xs w-full glass-card p-4 rounded-3xl border border-white/20 shadow-2xl transition-all duration-500 flex flex-col gap-2">
+    <!-- Karşılama / Canlı Asistan Popup -->
+    <div id="welcome-popup" class="fixed bottom-24 right-6 z-50 max-w-xs w-full glass-card p-4 rounded-3xl border border-white/20 shadow-2xl transition-all duration-500 flex flex-col gap-2">
         <div class="flex justify-between items-center">
-            <span class="text-[10px] font-mono tracking-widest text-emerald-400 uppercase font-bold">F&S Asistan</span>
+            <span class="text-[10px] font-mono tracking-widest text-gray-300 uppercase font-bold">F&S Asistan</span>
             <button onclick="document.getElementById('welcome-popup').classList.add('hidden')" class="text-gray-400 hover:text-white p-1">
                 <i class="fa-solid fa-xmark text-sm"></i>
             </button>
         </div>
-        <p class="text-xs text-gray-200 font-medium leading-relaxed">
+        <p class="text-xs text-white font-medium leading-relaxed">
             Hoşgeldiniz. Sizlere Nasıl Yardımcı Olabiliriz?
         </p>
     </div>
@@ -226,7 +232,7 @@
     <main class="w-full max-w-xl mx-auto px-6 pt-6 pb-24 flex flex-col items-center text-center z-10 relative">
         
         <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 mb-6 mt-4 reveal-section">
-            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+            <span class="w-2 h-2 rounded-full bg-gray-200 shadow-[0_0_8px_rgba(255,255,255,0.8)] animate-ping"></span>
             <span class="text-xs text-gray-300 font-medium">Fatih Sadak : Geleceğin Ajansı</span>
         </div>
 
@@ -241,7 +247,7 @@
         <!-- CTA Action Buttons -->
         <div class="w-full space-y-3.5 mb-12 reveal-section">
             <a href="https://wa.me/905415703679?text=Merhaba%20Fatih%20Bey,%20ücretsiz%20danışmanlık%20almak%20istiyorum." target="_blank" class="w-full py-4 px-6 rounded-full bg-white text-black font-bold text-sm flex items-center justify-center gap-2 hover:bg-gray-200 transition-all shadow-lg">
-                <i class="fa-brands fa-whatsapp text-lg text-emerald-600"></i>
+                <i class="fa-brands fa-whatsapp text-lg text-black"></i>
                 <span>WhatsApp ile İletişime Geçin</span>
             </a>
             <a href="https://instagram.com/whyfatihh" target="_blank" class="btn-outline-custom w-full py-4 px-6 rounded-full text-white font-semibold text-sm flex items-center justify-center gap-2.5 transition-all">
@@ -257,11 +263,11 @@
                 <span class="text-[10px] text-gray-400 uppercase mt-1">Mutlu Müşteri</span>
             </div>
             <div class="glass-card p-4 rounded-2xl flex flex-col items-center">
-                <span class="text-2xl font-black text-red-400">%100</span>
+                <span class="text-2xl font-black text-white">%100</span>
                 <span class="text-[10px] text-gray-400 uppercase mt-1">Yorum Silme Başarısı</span>
             </div>
             <div class="glass-card p-4 rounded-2xl flex flex-col items-center">
-                <span class="text-2xl font-black text-emerald-400">7/24</span>
+                <span class="text-2xl font-black text-white">7/24</span>
                 <span class="text-[10px] text-gray-400 uppercase mt-1">Teknik Destek</span>
             </div>
         </div>
@@ -272,11 +278,11 @@
             <p class="text-xs text-gray-400 mb-6">Harita itibarındaki gerçek değişim kartı ve operasyon sonuçlarımız.</p>
             
             <div class="grid grid-cols-1 gap-4">
-                <div class="glass-card p-5 rounded-3xl relative border border-emerald-500/25">
-                    <span class="text-xs font-semibold text-emerald-400 mb-2 block">Google Harita İtibarı (Before / After)</span>
+                <div class="glass-card p-5 rounded-3xl relative border border-white/10">
+                    <span class="text-xs font-semibold text-gray-300 mb-2 block">Google Harita İtibarı (Before / After)</span>
                     <div class="flex items-center justify-between bg-black/40 p-3 rounded-xl mb-2 border border-white/5">
-                        <div class="text-xs text-red-400">Öncesi: ⭐ 2.1 (45 Olumsuz Yorum)</div>
-                        <div class="text-xs text-emerald-400 font-bold">Sonrası: ⭐ 4.9 (0 Olumsuz Yorum)</div>
+                        <div class="text-xs text-gray-400">Öncesi: ⭐ 2.1 (45 Olumsuz Yorum)</div>
+                        <div class="text-xs text-white font-bold">Sonrası: ⭐ 4.9 (0 Olumsuz Yorum)</div>
                     </div>
                     <p class="text-[11px] text-gray-400">Sahte ve haksız karalama amaçlı tüm olumsuz yorumlar yasal ve güvenli süreçle kaldırılmıştır.</p>
                 </div>
@@ -288,15 +294,15 @@
             <h2 class="font-heading text-2xl font-extrabold text-white mb-2">Uzmanlık Alanlarımız</h2>
             <p class="text-xs text-gray-400 mb-6">Sadece tasarım değil, satış ve etkileşim getiren uçtan uca stratejik dijital çözümler sunuyoruz.</p>
             
-            <div class="glass-card p-6 rounded-3xl border border-red-500/30 relative overflow-hidden">
+            <div class="glass-card p-6 rounded-3xl border border-white/10 relative overflow-hidden">
                 <div class="flex justify-between items-start mb-3">
-                    <div class="w-10 h-10 rounded-xl bg-red-500/10 border border-red-500/20 flex items-center justify-center text-red-400 text-lg">
+                    <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white text-lg">
                         <i class="fa-solid fa-lock-open"></i>
                     </div>
-                    <span class="bg-red-500 text-white text-[9px] font-extrabold uppercase px-2.5 py-1 rounded-full">ACİL DESTEK</span>
+                    <span class="bg-white text-black text-[9px] font-extrabold uppercase px-2.5 py-1 rounded-full">ACİL DESTEK</span>
                 </div>
                 <h3 class="text-base font-bold text-white mb-2 flex items-center gap-2">
-                    Kapanan Instagram & Sosyal Medya Hesap Kurtarma <span class="w-2 h-2 rounded-full bg-red-500"></span>
+                    Kapanan Instagram & Sosyal Medya Hesap Kurtarma <span class="w-2 h-2 rounded-full bg-white"></span>
                 </h3>
                 <p class="text-xs text-gray-400 leading-relaxed">
                     İhlal, taklit, şikayet veya güvenlik nedeniyle kapanan Instagram, TikTok ve diğer tüm sosyal medya hesaplarınızı profesyonel ve yasal kanallarla güvenle geri açıyoruz.
@@ -305,13 +311,13 @@
 
             <div class="glass-card p-6 rounded-3xl border border-white/10 relative overflow-hidden">
                 <div class="flex justify-between items-start mb-3">
-                    <div class="w-10 h-10 rounded-xl bg-red-500/10 border border-red-500/20 flex items-center justify-center text-red-400 text-lg">
+                    <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white text-lg">
                         <i class="fa-solid fa-shield-halved"></i>
                     </div>
-                    <span class="bg-red-500 text-white text-[9px] font-extrabold uppercase px-2.5 py-1 rounded-full">EN ÇOK TALEP GÖREN</span>
+                    <span class="bg-white text-black text-[9px] font-extrabold uppercase px-2.5 py-1 rounded-full">EN ÇOK TALEP GÖREN</span>
                 </div>
                 <h3 class="text-base font-bold text-white mb-2 flex items-center gap-2">
-                    Google Kötü Yorum Silme <span class="w-2 h-2 rounded-full bg-red-500"></span>
+                    Google Kötü Yorum Silme <span class="w-2 h-2 rounded-full bg-white"></span>
                 </h3>
                 <p class="text-xs text-gray-400 leading-relaxed">
                     İşletmenizin itibarını zedeleyen, haksız, sahte veya karalama amaçlı Google Haritalar yorumlarını yasal ve güvenli yöntemlerle tamamen kaldırıyoruz.
@@ -319,8 +325,8 @@
             </div>
 
             <div class="glass-card p-6 rounded-3xl">
-                <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-white text-lg mb-3">
-                    <i class="fa-brands fa-instagram"></i>
+                <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-pink-400 text-lg mb-3">
+                    <i class="fa-brands fa-instagram" style="background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i>
                 </div>
                 <h3 class="text-base font-bold text-white mb-2">Sosyal Medya Yönetimi</h3>
                 <p class="text-xs text-gray-400 leading-relaxed">
@@ -338,13 +344,14 @@
                 <div>
                     <label class="text-xs font-semibold text-gray-300 mb-2 block">HİZMET SEÇİN</label>
                     <select id="calc-service" class="w-full bg-black/50 border border-white/10 rounded-xl p-3 text-xs text-white focus:outline-none">
+                        <option value="Web sitesi tasarımı">Web sitesi tasarımı</option>
                         <option value="Kapanan Hesap Kurtarma (Instagram/Sosyal Medya)">Kapanan Hesap Kurtarma (Instagram/Sosyal Medya)</option>
                         <option value="Google Kötü Yorum Silme (1-5 Adet)">Google Kötü Yorum Silme (1-5 Adet)</option>
                         <option value="Google Kötü Yorum Silme (5+ Adet Kurumsal)">Google Kötü Yorum Silme (5+ Adet Kurumsal)</option>
                         <option value="Aylık Sosyal Medya Yönetimi">Aylık Sosyal Medya Yönetimi</option>
                     </select>
                 </div>
-                <button onclick="sendCalculatedOffer()" class="w-full py-3.5 bg-emerald-500 hover:bg-emerald-600 text-black font-bold text-xs rounded-xl transition-all flex items-center justify-center gap-2">
+                <button onclick="sendCalculatedOffer()" class="w-full py-3.5 bg-white hover:bg-gray-200 text-black font-bold text-xs rounded-xl transition-all flex items-center justify-center gap-2">
                     <i class="fa-brands fa-whatsapp text-sm"></i>
                     <span>Detaylı WhatsApp Mesajı Oluştur & Gönder</span>
                 </button>
@@ -375,23 +382,23 @@
                 
                 <div class="space-y-3">
                     <div class="glass-card p-4 rounded-2xl flex items-center gap-3">
-                        <i class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
-                        <span class="text-xs font-semibold text-white">Apple standartlarında minimalist tasarım</span>
+                        <i class="fa-solid fa-circle-check text-white text-lg"></i>
+                        <span class="text-xs font-semibold text-white">7/24 teknik profesyonel destek</span>
                     </div>
                     <div class="glass-card p-4 rounded-2xl flex items-center gap-3">
-                        <i class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
-                        <span class="text-xs font-semibold text-white">7/24 Teknik destek ve hızlı iletişim</span>
+                        <i class="fa-solid fa-circle-check text-white text-lg"></i>
+                        <span class="text-xs font-semibold text-white">Bütçe dostu Destek & Yardım</span>
                     </div>
                     <div class="glass-card p-4 rounded-2xl flex items-center gap-3">
-                        <i class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
-                        <span class="text-xs font-semibold text-white">Yüksek dönüşüm oranlı büyüme stratejileri</span>
+                        <i class="fa-solid fa-circle-check text-white text-lg"></i>
+                        <span class="text-xs font-semibold text-white">Minimalist tasarımlar Ve daha fazlası</span>
                     </div>
                 </div>
             </div>
 
             <div class="glass-card p-6 rounded-3xl border border-white/10 space-y-3">
                 <h3 class="font-heading text-base font-bold text-white flex items-center gap-2">
-                    <i class="fa-solid fa-circle-question text-emerald-400"></i> Neden Fatih Sadak ile Çalışmalısınız?
+                    <i class="fa-solid fa-circle-question text-white"></i> Neden Fatih Sadak ile Çalışmalısınız?
                 </h3>
                 <p class="text-xs text-gray-300 leading-relaxed">
                     Dijital dünyada karşılaştığınız krizlerde (kapanan kurumsal/kişisel sosyal medya hesapları, haksız Google yorumları, itibar kayıpları) amatör çözümlerle zaman ve para kaybedersiniz. <strong>Fatih Sadak</strong>; doğrudan sonuç odaklı, şeffaf, güvenilir ve nokta atışı stratejilerle markanızı ve dijital varlığınızı güvence altına alır.
@@ -461,7 +468,7 @@
             </div>
         </section>
 
-        <!-- Section: Sık Sorulan Sorular (SSS / FAQ) - Senin Cevaplarınla Güncellendi -->
+        <!-- Section: Sık Sorulan Sorular (SSS / FAQ) -->
         <section id="faq" class="w-full text-left mb-16 reveal-section">
             <h2 class="font-heading text-2xl font-extrabold text-white mb-2">Sık Sorulan Sorular</h2>
             <p class="text-xs text-gray-400 mb-6">Merak ettiğiniz tüm detayları aşağıda yanıtladık.</p>
@@ -515,22 +522,22 @@
                 <p class="text-xs text-gray-400 mb-6">Projenizi hayata geçirmek veya kapanan hesabınızı kurtarmak için tek adım kaldı. Formu doldurun ya da WhatsApp'tan yazın.</p>
                 
                 <div class="space-y-3 mb-6">
-                    <a href="https://wa.me/905415703679?text=Merhaba%20Fatih%20Bey,%20kapanan%20hesab%C4%B1m%20i%C3%A7in%20yard%C4%B1m%20istiyorum." target="_blank" class="w-full p-4 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-3 hover:border-emerald-500/50 transition-all">
-                        <i class="fa-brands fa-whatsapp text-emerald-400 text-xl"></i>
+                    <a href="https://wa.me/905415703679?text=Merhaba%20Fatih%20Bey,%20kapanan%20hesab%C4%B1m%20i%C3%A7in%20yard%C4%B1m%20istiyorum." target="_blank" class="w-full p-4 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-3 hover:border-white/30 transition-all">
+                        <i class="fa-brands fa-whatsapp text-white text-xl"></i>
                         <div class="text-left">
                             <div class="text-xs font-bold text-white">WhatsApp Hattı</div>
                             <div class="text-[10px] text-gray-400">Acil Hesap Kurtarma & Bilgi Almak İçin Tıklayın</div>
                         </div>
                     </a>
-                    <a href="https://instagram.com/whyfatihh" target="_blank" class="w-full p-4 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-3 hover:border-pink-500/50 transition-all">
+                    <a href="https://instagram.com/whyfatihh" target="_blank" class="w-full p-4 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-3 hover:border-white/30 transition-all">
                         <i class="fa-brands fa-instagram text-pink-400 text-xl"></i>
                         <div class="text-left">
                             <div class="text-xs font-bold text-white">Instagram (@whyfatihh)</div>
                             <div class="text-[10px] text-gray-400">Profili Ziyaret Et</div>
                         </div>
                     </a>
-                    <button onclick="document.getElementById('modal-booking').classList.remove('hidden')" class="w-full p-4 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-3 hover:border-blue-400/50 transition-all text-left">
-                        <i class="fa-regular fa-calendar-check text-blue-400 text-xl"></i>
+                    <button onclick="document.getElementById('modal-booking').classList.remove('hidden')" class="w-full p-4 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-3 hover:border-white/30 transition-all text-left">
+                        <i class="fa-regular fa-calendar-check text-white text-xl"></i>
                         <div>
                             <div class="text-xs font-bold text-white">Canlı Randevu Planla</div>
                             <div class="text-[10px] text-gray-400">Ad-soyad ve tarih/saat girip talep ilet</div>
@@ -551,6 +558,7 @@
                     <div>
                         <label class="text-[11px] font-semibold text-gray-300 block mb-1">HİZMET SEÇİN</label>
                         <select id="c-service" class="w-full bg-black/50 border border-white/10 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-white/30">
+                            <option value="Web sitesi tasarımı">Web sitesi tasarımı</option>
                             <option value="Kapanan Hesap Kurtarma (Instagram vb.)">Kapanan Hesap Kurtarma (Instagram vb.)</option>
                             <option value="Google Kötü Yorum Silme">Google Kötü Yorum Silme</option>
                             <option value="Sosyal Medya Yönetimi">Sosyal Medya Yönetimi</option>
@@ -577,12 +585,18 @@
                 FATİH SADAK
             </div>
             <div class="text-gray-400 text-xs">Hep daha iyisi için #1</div>
+            
+            <!-- Özel İtalik İmza -->
+            <div class="font-signature italic text-xl tracking-widest text-gray-300 my-2 opacity-80">
+                F & S
+            </div>
+
             <div class="flex gap-6 text-xs text-gray-400">
                 <a href="#services" class="hover:text-white transition-colors">Hizmetler</a>
                 <a href="#contact" class="hover:text-white transition-colors">İletişim</a>
                 <a href="https://instagram.com/whyfatihh" target="_blank" class="hover:text-white transition-colors">Instagram</a>
             </div>
-            <div class="text-[11px] text-gray-600 mt-4 mb-8">&copy; 2026 Fatih Sadak. Tüm hakları saklıdır.</div>
+            <div class="text-[11px] text-gray-600 mt-2 mb-8">&copy; 2026 Fatih Sadak. Tüm hakları saklıdır.</div>
         </footer>
     </main>
 
@@ -613,14 +627,14 @@
 
     <!-- Ekranın Altında Sabit Duran Platform Logoları Dock'u & Arka Plan Müzik Çaları -->
     <div class="fixed-social-dock">
-        <button id="music-btn" onclick="toggleYoutubeMusic()" class="dock-item" title="Succession Tema Müziği" style="color: #EF4444; background: none; border: none; cursor: pointer;">
+        <button id="music-btn" onclick="toggleYoutubeMusic()" class="dock-item" title="Müziği Aç/Kapat" style="color: #ffffff; background: none; border: none; cursor: pointer;">
             <i class="fa-solid fa-play" id="music-icon"></i>
         </button>
 
         <a href="https://instagram.com/whyfatihh" target="_blank" class="dock-item" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
         <a href="https://tiktok.com/@whyfatihh" target="_blank" class="dock-item" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
         <a href="https://t.me/whyfatihh" target="_blank" class="dock-item" title="Telegram"><i class="fa-brands fa-telegram"></i></a>
-        <a href="https://wa.me/905415703679?text=Merhaba%20Fatih%20Bey,%20web%20sitenizden%20ulaşıyorum." target="_blank" class="dock-item" title="WhatsApp"><i class="fa-brands fa-whatsapp" style="color: #10B981;"></i></a>
+        <a href="https://wa.me/905415703679?text=Merhaba%20Fatih%20Bey,%20web%20sitenizden%20ulaşıyorum." target="_blank" class="dock-item" title="WhatsApp"><i class="fa-brands fa-whatsapp" style="color: #ffffff;"></i></a>
     </div>
 
     <!-- Gizli YouTube Müzik Oynatıcı -->
@@ -629,9 +643,8 @@
     </div>
 
     <script>
-        const musicSrc = "https://www.youtube.com/embed/LlgWqcHXD8w?enablejsapi=1&autoplay=1&loop=1&playlist=LlgWqcHXD8w&controls=0&modestbranding=1";
+        const musicSrc = "https://www.youtube.com/embed/bOupGVM9Uvc?enablejsapi=1&autoplay=1&loop=1&playlist=bOupGVM9Uvc&controls=0&modestbranding=1&start=20";
 
-        // "EVET" butonuna basıldığında açılış ekranını kaldır ve müziği başlat
         function enterSite() {
             const splash = document.getElementById('splash-screen');
             splash.classList.add('hidden');
@@ -649,13 +662,15 @@
             }, 200);
         }
 
-        // "HAYIR" butonuna basıldığında butonun yok olması
         function hideNoButton() {
             const noBtn = document.getElementById('no-btn');
+            const yesBtn = document.getElementById('yes-btn');
             noBtn.classList.add('fade-out-btn');
+            setTimeout(() => {
+                noBtn.style.display = 'none';
+            }, 400);
         }
 
-        // SSS Akordeon Mantığı
         function toggleFaq(element) {
             const allItems = document.querySelectorAll('.faq-item');
             allItems.forEach(item => {
@@ -666,7 +681,6 @@
             element.classList.toggle('active');
         }
 
-        // Puanlama Yıldızları Mantığı
         function rateStar(rating) {
             const stars = document.querySelectorAll('.star-btn');
             stars.forEach((star, index) => {
